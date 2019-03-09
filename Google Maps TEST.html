@@ -1,5 +1,56 @@
 <!DOCTYPE html>
 <html>
-  <h1>TEST</h1>>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="java.js"></script>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var userLat;
+      var userLng;
+      var map;
+      // function initMap() {
+      //   map = new google.maps.Map(document.getElementById('map'), {
+      //     center: {lat: userLat, lng: userLng},
+      //     zoom: 8
+      //   });
+      // }
+
+      
+
+      
+      var geocoded = "https://maps.googleapis.com/maps/api/geocode/json?address=23228&key=AIzaSyDZYOxZZL8kgIlC4RLfG8Gkfr8xHnZmFTc"
+      $.getJSON(geocoded, function(result){
+        userLat = parseInt(result.results[0].geometry.location.lat)
+        userLng = parseInt(result.results[0].geometry.location.lng)
+      })
+      console.log(userLat)
+        console.log(userLng)
+      // var gymMarkersUrl = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=jiu+jitsu+gym&location=42.3675294,-71.186966&radius=1000&key=AIzaSyDZYOxZZL8kgIlC4RLfG8Gkfr8xHnZmFTc"
+      // $.getJSON(gymMarkersUrl, function(result) {
+      //   console.log(result)
+      // })
+      
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZYOxZZL8kgIlC4RLfG8Gkfr8xHnZmFTc&libraries=places&callback=initMap"
+    async defer></script>
+
   </body>
 </html>
